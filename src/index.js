@@ -1,19 +1,17 @@
 module.exports = function solveEquation(equation) {
-  // your implementation
-  var solutions = [];
-  let equationsplit = equation.split(" ");
-  function compare(a,b) {return a-b};
-  if (equationsplit[3]==="-") {var five = (+equationsplit[4])*(-1)};
-  if (equationsplit[3]==="+") var five = +equationsplit[4];
-  if (equationsplit[7]==="-") {var nine = (+equationsplit[8])*(-1)};
-  if (equationsplit[7]==="+") var nine = +equationsplit[8];
-  var one = +equationsplit[0];
-  var D = Math.sqrt(five*five - 4*one*nine);
-  var x1 = Math.round(((-1*five) + D)/(2*one));
-  var x2 = Math.round(((-1*five) - D)/(2*one));
+  let solutions = [];
+  let A, B, C;
+  let equationSplit = equation.split(" ");
+  if (equationSplit[3]==="-") B = (+equationSplit[4])*(-1);
+  if (equationSplit[3]==="+") B = +equationSplit[4];
+  if (equationSplit[7]==="-") C = (+equationSplit[8])*(-1);
+  if (equationSplit[7]==="+") C = +equationSplit[8];
+  A = +equationSplit[0];
+  let D = Math.sqrt(B**2 - 4*A*C);
+  var x1 = Math.round(((-B) + D)/(2*A));
+  var x2 = Math.round(((-B) - D)/(2*A));
   solutions.push(x1,x2);
-  solutions.sort(function(a, b) {
+  return solutions.sort((a, b) => {
     return a - b;
   });
-  return (solutions);
 }
